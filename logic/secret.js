@@ -55,7 +55,7 @@ var app = new Vue({
         
         deleteRegister(data, index) {
           Swal.fire({
-              title: "¿Está seguro de eliminar?",
+              title: "¿Está seguro de eliminar a"+ " " +data.name+"?",
               text: "¡Este proceso es irreversible!",
               icon: "warning",
               showCancelButton: true,
@@ -66,7 +66,7 @@ var app = new Vue({
             }).then((result) => {
               if (result.isConfirmed) {
                 this.secretaries.splice(index,1);
-                this.updateLocalStorage()
+                this.updateLocalStorage();
                 this.message(
                   "Se eliminó correctamente",
                   3000,
@@ -90,7 +90,7 @@ var app = new Vue({
             total: this.result2, 
           });
           this.updateLocalStorage();
-          this.message("Se guardó correctamente", 3000, "center");
+          this.message("Se liquido correctamente", 3000, "center");
           this.delete();
         },
         getArray(index){
