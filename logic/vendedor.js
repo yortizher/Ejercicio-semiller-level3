@@ -11,16 +11,18 @@ const app = new Vue({
      error3: false,
      total:0,
      salary:1000000,
+     commission1:0.10,
+     commission2:0.20,
      commission:0,
      sellPrice:0,
+     bonus:"0%",
      nameM:"",
      optionM:"",             
      sellsM:"",
      commissionM:"",
      sellPriceM:"",
-     bonifiM:"",
+     bonusM:"",
      total:"",
-     
      index:"",
 
      
@@ -62,15 +64,11 @@ const app = new Vue({
 
          this.nameM = this.settlement[index].name,
          this.optionM=this.settlement[index].option
-         .sellsM=this.settlement[index].sells,
+         this.sellsM=this.settlement[index].sells,
          this.commissionM=this.settlement[index].commission,
          this.sellPriceM=this.settlement[index].sells
-         if(this.sellPriceM > 5000000 && this.sellPriceM < 10000000)  {
-          this.bonifiM="20%"
-         }else{
-          this.bonifiM="20%"
-         }      
-         this
+         this.bonusM=this.settlement[index].bonus  
+         this.totalM=this.settlement[index].total 
          
         },
 
@@ -107,7 +105,7 @@ const app = new Vue({
                 
             }else if (this.option == "zapato"){
                 this.sellPrice = this.sells * this.shoes[1].price
-                alert(2)
+              
             }
 
 
@@ -116,19 +114,22 @@ const app = new Vue({
   
             }else{
                 if(this.sellPrice > 5000000 && this.sellPrice < 10000000){
-                    this.commission = (0.10 * this.salary)
+                    this.commission = (this.commission1 * this.salary)
+                    this.bonus="10%"
                     
                     this.total = this.commission + this.salary + 117172
                 
                 } else if(this.sellPrice > 10000000){
-                    this.commission = (0.20 * this.salary)
+                    this.commission = (this.commission2 * this.salary)
                     this.total = this.commission + this.salary + 117172
-                    alert(this.commission)
+                    this.bonus="20%"
+                   
                 
                 }else{
                     this.commission = 0
                     this.total = this.commission + this.salary + 117172
-                    alert(this.sellPrice)
+                    this.bonus="0%"
+                   
                 
                 }
 
@@ -137,8 +138,9 @@ const app = new Vue({
                     option:this.option,
                     sells: this.sells,
                     commission: this.commission,
+                    bonus: this.bonus,
                     sellPrice:this.sellPrice,
-                    total:`$ ${this.total}`,
+                    total:this.total,
                     
                     
                     
