@@ -22,6 +22,7 @@ const app = new Vue({
      commissionM:"",
      sellPriceM:"",
      bonusM:"",
+     totalM:0,
      total:"",
      index:"",
 
@@ -74,7 +75,7 @@ const app = new Vue({
 
         deleteRegister(data, index) {
             Swal.fire({
-                title: "¿Está seguro de eliminar?",
+                title: "¿Está seguro de eliminar a"+ " " +data.name+"?",
                 text: "¡Este proceso es irreversible!",
                 icon: "warning",
                 showCancelButton: true,
@@ -96,7 +97,7 @@ const app = new Vue({
             });
     },
 
-          calculate(){
+        calculateLV(){
             this.getError();
 
             
@@ -146,7 +147,7 @@ const app = new Vue({
                     
                 });
                 this.updateLocalStorage();
-                this.message("Se guardó correctamente", 3000, "center");
+                this.message("Se liquido correctamente", 3000, "center");
                 this.clearInputs();
             }
   

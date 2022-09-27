@@ -58,7 +58,7 @@ const app = new Vue({
               "Ingreso exitoso",
               "success"
             ) ;
-            location.href="../view/vendedor.html";
+            setTimeout(function() {location.href="../view/vendedor.html"}, 2000);
           }
        
           
