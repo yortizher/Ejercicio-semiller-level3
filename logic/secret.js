@@ -6,15 +6,23 @@ var app = new Vue({
         nameM:"",
         extraHours:0,
         extraHoursM:"",
-        valueExtraHours:0,
         total:0,
         error1:false,
         error2:false,
         index:"",
         secretaries:[],
         sMLV:1000000,
-        result:0,
         valueExtraHours:0,
+        valueExtraHoursM:"",
+        WorkingHours:8,
+        WorkDays:6,
+        workWeek:4,
+        overtimePercentage:1.80,
+        result:"",
+        result2:0,
+        result2M:"",
+
+
         
       
     },
@@ -69,26 +77,27 @@ var app = new Vue({
           });
         },
         calculateLS(){
-          this.valueExtraHours=(5208.33333* 1.80);
-          this.result=(this.sMLV) + ((this.extraHours * 5208.33333) * 1.80);
+          this.valueExtraHours=((this.sMLV/6)/this.WorkDays/this.WorkingHours) *this.overtimePercentage;
+          this.result2=(this.sMLV)+(this.extraHours *this.valueExtraHours);
         },
         addSecretaries() {
+          this.calculateLS();
           this.secretaries.push({
             index: this.item++,
             name: this.name,
             extraHours: this.extraHours, 
             value:this.valueExtraHours,
-            total: this.total, 
+            total: this.result2, 
           });
-          this.calculateLS()
-          this.total=this.result;
           this.updateLocalStorage();
           this.message("Se guardó correctamente", 3000, "center");
           this.delete();
         },
         getArray(index){
-            this.nameM = this.secretaries[index].name
-            this.extraHoursM=this.secretaries[index].extraHours
+            this.nameM = this.secretaries[index].name;
+            this.extraHoursM=this.secretaries[index].extraHours;
+            this.valueExtraHoursM=this.secretaries[index].value;
+            this.result2M=this.secretaries[index].total;
         },
     
 
