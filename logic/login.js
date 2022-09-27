@@ -59,7 +59,35 @@ const app = new Vue({
               "success"
             ) ;
             setTimeout(function() {location.href="../view/vendedor.html"}, 2000);
+          }else if(this.username == "ensamblador") {
+            this.message(
+              "¡Enhorabuena!",
+              2200,
+              "center",
+              "Ingreso exitoso",
+              "success"
+            ) ;
+            setTimeout(function() {location.href="../view/ensamblador.html"}, 2000);
+          }else if(this.username == "secretario") {
+            this.message(
+              "¡Enhorabuena!",
+              2200,
+              "center",
+              "Ingreso exitoso",
+              "success"
+            ) ;
+            setTimeout(function() {location.href="../view/secret.html"}, 2000);
+          }else if(this.username == "administrador del sistema") {
+            this.message(
+              "¡Enhorabuena!",
+              2200,
+              "center",
+              "Ingreso exitoso",
+              "success"
+            ) ;
+            setTimeout(function() {location.href="../view/administrator.html"}, 2000);
           }
+          
        
           
 
