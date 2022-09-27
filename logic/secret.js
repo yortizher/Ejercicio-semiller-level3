@@ -77,7 +77,7 @@ var app = new Vue({
           });
         },
         calculateLS(){
-          this.valueExtraHours=((this.sMLV/6)/this.WorkDays/this.WorkingHours) *this.overtimePercentage;
+          this.valueExtraHours=((this.sMLV/this.workWeek)/this.WorkDays/this.WorkingHours) *this.overtimePercentage;
           this.result2=(this.sMLV)+(this.extraHours *this.valueExtraHours);
         },
         addSecretaries() {
