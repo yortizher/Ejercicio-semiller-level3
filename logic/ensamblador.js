@@ -28,8 +28,11 @@ const app = new Vue({
      nameM:"",
      optionM:"",             
      amountM:"",
+     extraHm:"",
      sonsM:"",
      bonusM:"",
+     incrementM:"",
+     commissionM:"",
      totalM:0,
      total:"",
      index:"",
@@ -90,12 +93,14 @@ const app = new Vue({
 
         getArray(index){
 
-         this.nameM = this.manufacturedt[index].name,
+         this.nameM = this.manufactured[index].name,
          this.optionM=this.manufactured[index].option
          this.amountM=this.manufactured[index].sells,
-         this.commissionM=this.manufactured[index].commission,
+         this.extraHm=this.manufactured[index].extraH
          this.sonsM=this.manufactured[index].sells
          this.totalM=this.manufactured[index].total 
+         this.bonusM =this.manufactured[index].bonus
+         this.incrementM = this.manufactured[index].increment
          
         },
         getIncrement(){
@@ -151,12 +156,14 @@ const app = new Vue({
             this.getExtraH()
             this.getBonus()
             this.getIncrement()
+            
             this.total = this.salary + this.extraHc + this.bonus + this.increment + 117172;
             
+        
+            console.log(this.increment)
             console.log(this.salary)
             console.log(this.extraHc)
-            console.log(this.increment)
-          
+            console.log(this.bonus)
       
             if(this.amount > this.shoes[0].production ){
                 this.sellPrice= this.sells * this.shoes[0].price
@@ -179,8 +186,10 @@ const app = new Vue({
                     this.manufactured.push({
                         name: this.name,
                         option:this.option,
-                        extraH: this.extraH,
+                        extraH: this.extraHc,
                         amount: this.amount,
+                        bonus: this.bonus,
+                        increment: this.increment,
                         sons: this.sons,
                         total:this.total,
     
