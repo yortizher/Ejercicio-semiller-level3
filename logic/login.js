@@ -58,7 +58,7 @@ const app = new Vue({
               "Ingreso exitoso",
               "success"
             ) ;
-            setTimeout(function() {location.href="../view/vendedor.html"}, 2000);
+            setTimeout(function() {location.href="./view/vendedor.html"}, 2000);
           }else if(this.username == "ensamblador") {
             this.message(
               "¡Enhorabuena!",
@@ -67,7 +67,7 @@ const app = new Vue({
               "Ingreso exitoso",
               "success"
             ) ;
-            setTimeout(function() {location.href="../view/ensamblador.html"}, 2000);
+            setTimeout(function() {location.href="./view/ensamblador.html"}, 2000);
           }else if(this.username == "secretario") {
             this.message(
               "¡Enhorabuena!",
@@ -76,7 +76,7 @@ const app = new Vue({
               "Ingreso exitoso",
               "success"
             ) ;
-            setTimeout(function() {location.href="../view/secret.html"}, 2000);
+            setTimeout(function() {location.href="./view/secret.html"}, 2000);
           }else if(this.username == "administrador del sistema") {
             this.message(
               "¡Enhorabuena!",
@@ -85,7 +85,7 @@ const app = new Vue({
               "Ingreso exitoso",
               "success"
             ) ;
-            setTimeout(function() {location.href="../view/administrator.html"}, 2000);
+            setTimeout(function() {location.href="./view/administrator.html"}, 2000);
           }
           
        
