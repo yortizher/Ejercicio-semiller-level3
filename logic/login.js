@@ -4,10 +4,10 @@ const app = new Vue({
       username: "",
       password: "",
       userCredentials: [
-        { name: "secretario", password: "12345" },
-        { name: "vendedor", password: "123456" },
-        { name: "ensamblador", password: "1234567" },
-        { name: "administrador del sistema", password: "12345678" },
+        { name: "secretario", password: "1234" },
+        { name: "vendedor", password: "1324" },
+        { name: "ensamblador", password: "1243" },
+        { name: "administrador del sistema", password: "4321" },
       ],
       seller:false,
       error: false,
@@ -48,7 +48,7 @@ const app = new Vue({
             "center",
             "Verifique que los datos sean correctos",
             "error"
-          )
+          );
           }
            else if(this.username == "vendedor") {
             this.message(

@@ -4,9 +4,17 @@ const app = new Vue({
      name:"",
      option:"",
      extraH:"",
+     extraHc:"",
+     extraV:2.2,
      amount:"",
      sons:"",
-     shoes:[{model:"zapatilla",price:40000,producction:500},{model:"zapato",price:45000,production:500}],
+     increment:"",
+     shoeI1:0.10,
+     shoeI2:0.20,
+     shoeI3:0.15,
+     shoeI4:0.30,
+     bonus:"",
+     shoes:[{model:"zapatilla",price:40000,production:3500},{model:"zapato",price:45000,production:3500}],
      manufactured:[],
      error: false,
      error2: false,
@@ -21,6 +29,7 @@ const app = new Vue({
      optionM:"",             
      amountM:"",
      sonsM:"",
+     bonusM:"",
      totalM:0,
      total:"",
      index:"",
@@ -34,8 +43,7 @@ const app = new Vue({
         },
         
         getExtraH(){
-            this.extraH=(((this.salary/4)/6)/8) *this.overtimePercentage;
-            this.result2=(this.sMLV)+(this.extraHours *this.valueExtraHours);
+            this.extraHc=(((this.salary/4)/6)/8) * this.extraV *this.extraH ;
         },
 
         getError() {
@@ -69,10 +77,13 @@ const app = new Vue({
             this.error5 = false;
             }
           },
+
           clearInputs(){
             this.name=""
             this.option=""
-            this.sells=""
+            this.sons=""
+            this.amount=""
+            this.extraH=""
         
   
         },
@@ -81,12 +92,34 @@ const app = new Vue({
 
          this.nameM = this.manufacturedt[index].name,
          this.optionM=this.manufactured[index].option
-         this.sellsM=this.manufactured[index].sells,
+         this.amountM=this.manufactured[index].sells,
          this.commissionM=this.manufactured[index].commission,
-         this.sellPriceM=this.manufactured[index].sells
-         this.bonusM=this.manufactured[index].bonus  
+         this.sonsM=this.manufactured[index].sells
          this.totalM=this.manufactured[index].total 
          
+        },
+        getIncrement(){
+            if(this.option == 'zapato' && this.amount> 1000 & this.amount<2000){
+                this.increment = this.shoes[0].price * this.shoeI1
+                
+            }else if (this.option == 'zapato' && this.amount> 2000){
+                this.increment = this.shoes[0].price * this.shoeI2
+            }else if (this.option == 'zapatilla' && this.amount> 1700 & this.amount<3000){
+                this.increment = this.shoes[0].price * this.shoeI3
+            }else if (this.option == 'zapatilla' && this.amount> 3000){
+                this.increment = this.shoes[0].price * this.shoeI4
+            }
+            else{
+                this.increment=0
+            }
+        },
+
+        getBonus(){
+            if(this.sons == 1){
+                this.bonus = 80000
+            }else if (this.sons>1){
+                this.bonus = this.sons * 60000
+            }
         },
 
         deleteRegister(data, index) {
@@ -115,38 +148,52 @@ const app = new Vue({
 
         calculateLE(){
             this.getError();
-
+            this.getExtraH()
+            this.getBonus()
+            this.getIncrement()
+            this.total = this.salary + this.extraHc + this.bonus + this.increment + 117172;
             
-            if(this.option == "zapatilla"){
+            console.log(this.salary)
+            console.log(this.extraHc)
+            console.log(this.increment)
+          
+      
+            if(this.amount > this.shoes[0].production ){
                 this.sellPrice= this.sells * this.shoes[0].price
+                this.message2(
+                    "El numero de produccion",
+                    2200,
+                    "center",
+                    "Supero el limite",
                 
-            }else if (this.option == "zapato"){
-                this.sellPrice = this.sells * this.shoes[1].price
+                  )
+    
+                
+            }else{
+                if(this.error == true || this.error2 == true || this.error3 == true ){
+               
+  
+                }else{
+                    
+                    
+                    this.manufactured.push({
+                        name: this.name,
+                        option:this.option,
+                        extraH: this.extraH,
+                        amount: this.amount,
+                        sons: this.sons,
+                        total:this.total,
+    
+                    });
+                    this.updateLocalStorage();
+                    this.message("Se liquido correctamente", 3000, "center");
+                    this.clearInputs();
+                }
               
             }
 
 
-            if(this.error == true || this.error2 == true || this.error3 == true ){
-               
-  
-            }else{
-                
-
-                this.manufactured.push({
-                    name: this.name,
-                    option:this.option,
-                    extraH: this.extraH,
-                    ammount: this.ammount,
-                    sons: this.sons,
-                    total:this.total,
-                    
-                    
-                    
-                });
-                this.updateLocalStorage();
-                this.message("Se liquido correctamente", 3000, "center");
-                this.clearInputs();
-            }
+            
   
             
            
@@ -168,6 +215,16 @@ const app = new Vue({
                   });
                   },
 
+            message2(msj,time,position,text){
+            Swal.fire({
+                position: position,
+                text: text,
+                icon: "error",
+                title: msj,
+                showConfirmButton: false,
+                timer: time,
+            });
+            },
             
             
     },
