@@ -1,6 +1,6 @@
 # App Liquidador
 
-App parqueadero para la gestión desarrollada en VUE
+App Liquidador para la gestión desarrollada en VUE
 ## Installation
 Clone el proyecto con el siguiente comando
 
