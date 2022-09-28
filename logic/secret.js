@@ -17,16 +17,15 @@ var app = new Vue({
         WorkingHours:8,
         WorkDays:6,
         workWeek:4,
-        overtimePercentage:1.80,
+        overtimePercentage:1.8,
         result:"",
         result2:0,
         result2M:"",
 
 
-        
-      
     },
     methods: {
+      
         getError() {
             if (this.name == "") {
               this.error1 = true;
@@ -69,7 +68,7 @@ var app = new Vue({
                 this.updateLocalStorage();
                 this.message(
                   "Se eliminó correctamente",
-                  3000,
+                  1500,
                   "center",
                   "¡Este proceso es irreversible!"
                 );
@@ -87,23 +86,24 @@ var app = new Vue({
             name: this.name,
             extraHours: this.extraHours, 
             value:this.valueExtraHours,
-            total: this.result2, 
+            total: this.result2,
+            baseSalary:this.sMLV,
+            overtimePercentage:this.overtimePercentage,
+            
+            
           });
           this.updateLocalStorage();
-          this.message("Se liquido correctamente", 3000, "center");
+          this.message("Se liquidó correctamente", 1500, "center");
           this.delete();
         },
         getArray(index){
-            this.nameM = this.secretaries[index].name;
-            this.extraHoursM=this.secretaries[index].extraHours;
-            this.valueExtraHoursM=this.secretaries[index].value;
-            this.result2M=this.secretaries[index].total;
+          this.nameM = this.secretaries[index].name;
+          this.extraHoursM=this.secretaries[index].extraHours;
+          this.valueExtraHoursM=this.secretaries[index].value;
+          this.result2M=this.secretaries[index].total;
         },
-    
-
-        updateLocalStorage() {
-          localStorage.setItem("intento100",JSON.stringify(this.secretaries));
-        },
+        
+        
         message(msj,time,position,text){
           Swal.fire({
             position: position,
@@ -115,11 +115,16 @@ var app = new Vue({
           });
         },
         delete(){
-            this.name="";
-            this.extraHours="";
+          this.name="";
+          this.extraHours="";
         },
-       
-      
+        updateLocalStorage() {
+          localStorage.setItem("intento100",JSON.stringify(this.secretaries));
+        },
+        updateLocalStorage2() {
+          this.sMLV = JSON.parse(localStorage.getItem("SalarioBase"));
+          this.overtimePercentage = JSON.parse(localStorage.getItem("PorcentajeHora"));
+        },
     },
     created() {
         if (localStorage.getItem("intento100") !== null) {
@@ -127,7 +132,9 @@ var app = new Vue({
         } else {
           this.secretaries = this.secretaries;
         }
+        this.updateLocalStorage2()
     },
+    
 
   });
 

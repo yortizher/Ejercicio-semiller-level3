@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar vendedor</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/view.css">
@@ -50,16 +50,33 @@
                 <div class="input-group mb-1 ">
 
                     <div class="input-group-prepend col-6 ">
-                        <span class="input-group-text " id="basic-addon1">% de bonificación</span>
+                        <span class="input-group-text " id="basic-addon1">% de bonificación 5</span>
                     </div>
-                    <input v-model.number="bonusPercentage" type="text" class="form-control col-6  mb-2  "
-                        placeholder="% de bonificación" aria-label="Username" aria-describedby="basic-addon1">
+                    <input v-model.number="commission5" type="text" class="form-control col-6  mb-2  "
+                        placeholder="% de bonificación cinco millones" aria-label="Username" aria-describedby="basic-addon1">
 
                 </div>
-                <span class="" v-if="error2" style="color:red;">Por favor llene el campo de % de bonificación</span>
+                <span class="" v-if="error2" style="color:red;">Por favor llene el campo de % de bonificación 5</span>
 
             </div>
         </div>
+        <div class="row ">
+            <div class="col">
+                <div class="input-group mb-1 ">
+
+                    <div class="input-group-prepend col-6 ">
+                        <span class="input-group-text " id="basic-addon1">% de bonificación 10</span>
+                    </div>
+                    <input v-model.number="commission10" type="text" class="form-control col-6  mb-2  "
+                        placeholder="% de bonificación diez millones" aria-label="Username" aria-describedby="basic-addon1">
+
+                </div>
+                <span class="" v-if="error3" style="color:red;">Por favor llene el campo de % de bonificación 10</span>
+
+            </div>
+        </div>
+        
+
         <div class="row ps-3 pe-3 mt-2 mb-2">
 
             <button type="button" @click="validate()" class="btn btn-outline-secondary">Guardar</button>
@@ -86,8 +103,12 @@
                                 <td>$ {{baseSalary1}}</td>
                             </tr>
                             <tr>
-                                <td>% de horas extras</td>
-                                <td>$ {{bonusPercentage}}</td>
+                                <td>% de bonificación 5</td>
+                                <td>$ {{commission5}}</td>
+                            </tr>
+                            <tr>
+                                <td>% de bonificación 10</td>
+                                <td>$ {{commission10}}</td>
                             </tr>
 
                         </tbody>
