@@ -15,6 +15,7 @@ const app = new Vue({
      shoeI4:0.30,
      bonus:"",
      shoes:[{model:"zapatilla",price:40000,production:3500},{model:"zapato",price:45000,production:3500}],
+     AssembledShoeQuantity:0,
      manufactured:[],
      error: false,
      error2: false,
@@ -36,6 +37,8 @@ const app = new Vue({
      totalM:0,
      total:"",
      index:"",
+     children1:80000,
+     children2:60000,
 
      
     },
@@ -121,9 +124,9 @@ const app = new Vue({
 
         getBonus(){
             if(this.sons == 1){
-                this.bonus = 80000
+                this.bonus = this.children1
             }else if (this.sons>1){
-                this.bonus = this.sons * 60000
+                this.bonus = this.sons * this.children2
             }
         },
 
@@ -234,6 +237,18 @@ const app = new Vue({
                 timer: time,
             });
             },
+            updateLocalStorage2() {
+              this.salary = JSON.parse(localStorage.getItem("assemblerBaseSalary"));
+              this.extraV = JSON.parse(localStorage.getItem("overtimePercentage"));
+              this.shoes[0].production=JSON.parse(localStorage.getItem("AssembledShoeQuantity"));
+              this.shoeI3=JSON.parse(localStorage.getItem("initialPercentageSlippers"));
+              this.shoeI4=JSON.parse(localStorage.getItem("finalPercentageSlippers"));
+              this.shoes[1].production=JSON.parse(localStorage.getItem("QuantityAssembledShoes"));
+              this.shoeI1=JSON.parse(localStorage.getItem("initialPercentageShoes"));
+              this.shoeI2=JSON.parse(localStorage.getItem("finalPercentageShoes"));
+              this.children1=JSON.parse(localStorage.getItem("quantityChildrenCommission1"));
+              this.children2=JSON.parse(localStorage.getItem("quantityChildrenCommission2"));
+            },
             
             
     },
@@ -244,6 +259,7 @@ const app = new Vue({
         } else {
           this.manufactured = this.manufactured;
         }
+        this.updateLocalStorage2()
       }
   });
   

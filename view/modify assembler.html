@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar ensamblador</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/view.css">
@@ -71,24 +71,44 @@
                         placeholder="Cantidad zapatillas" aria-label="Username" aria-describedby="basic-addon1">
 
                 </div>
-                <span class="" v-if="error3" style="color:red;">Por favor llene el campo de cantidad de zapatillas</span>
+                <span class="" v-if="error3" style="color:red;">Por favor llene el campo de cantidad de
+                    zapatillas</span>
 
             </div>
-        </div><div class="row ">
+        </div>
+        <div class="row ">
             <div class="col">
                 <div class="input-group mb-1 ">
 
                     <div class="input-group-prepend col-6 ">
-                        <span class="input-group-text " id="basic-addon1">% de zapatillas</span>
+                        <span class="input-group-text " id="basic-addon1">% de zapatillas inicial</span>
                     </div>
-                    <input v-model.number="percentageSlippers" type="text" class="form-control col-6  mb-2  "
+                    <input v-model.number="percentageSlippers17" type="text" class="form-control col-6  mb-2  "
                         placeholder="% de zapatillas" aria-label="Username" aria-describedby="basic-addon1">
 
                 </div>
-                <span class="" v-if="error4" style="color:red;">Por favor llene el campo de % de zapatillas</span>
+                <span class="" v-if="error4" style="color:red;">Por favor llene el campo de % de zapatillas
+                    inicial</span>
 
             </div>
-        </div><div class="row ">
+        </div>
+        
+        <div class="row ">
+            <div class="col">
+                <div class="input-group mb-1 ">
+
+                    <div class="input-group-prepend col-6 ">
+                        <span class="input-group-text " id="basic-addon1">% de zapatillas final</span>
+                    </div>
+                    <input v-model.number="percentageSlippers30" type="text" class="form-control col-6  mb-2  "
+                        placeholder="% de zapatillas final" aria-label="Username" aria-describedby="basic-addon1">
+
+                </div>
+                <span class="" v-if="error5" style="color:red;">Por favor llene el campo de % de zapatillas final</span>
+
+            </div>
+        </div>
+        <div class="row ">
             <div class="col">
                 <div class="input-group mb-1 ">
 
@@ -99,35 +119,67 @@
                         placeholder="Cantidad de zapatos" aria-label="Username" aria-describedby="basic-addon1">
 
                 </div>
-                <span class="" v-if="error5" style="color:red;">Por favor llene el campo de cantidad zapatos</span>
+                <span class="" v-if="error6" style="color:red;">Por favor llene el campo de cantidad zapatos</span>
 
             </div>
-        </div><div class="row ">
+        </div>
+        <div class="row ">
             <div class="col">
                 <div class="input-group mb-1 ">
 
                     <div class="input-group-prepend col-6 ">
-                        <span class="input-group-text " id="basic-addon1">% de zapatos</span>
+                        <span class="input-group-text " id="basic-addon1">% de zapatos inicial</span>
                     </div>
-                    <input v-model.number="percentageShoes" type="text" class="form-control col-6  mb-2  "
-                        placeholder="% de zapatos" aria-label="Username" aria-describedby="basic-addon1">
+                    <input v-model.number="percentageShoes10" type="text" class="form-control col-6  mb-2  "
+                        placeholder="% de zapatos inicial" aria-label="Username" aria-describedby="basic-addon1">
 
                 </div>
-                <span class="" v-if="error6" style="color:red;">Por favor llene el campo de % de zapatos</span>
+                <span class="" v-if="error7" style="color:red;">Por favor llene el campo de % de zapatos inicial</span>
 
             </div>
-        </div><div class="row ">
+        </div>
+        <div class="row ">
             <div class="col">
                 <div class="input-group mb-1 ">
 
                     <div class="input-group-prepend col-6 ">
-                        <span class="input-group-text " id="basic-addon1">Comisión por niños</span>
+                        <span class="input-group-text " id="basic-addon1">% de zapatos final</span>
                     </div>
-                    <input v-model.number="childrenCommission" type="text" class="form-control col-6  mb-2  "
-                        placeholder="Comisión por niños" aria-label="Username" aria-describedby="basic-addon1">
+                    <input v-model.number="percentageShoes20" type="text" class="form-control col-6  mb-2  "
+                        placeholder="% de zapatos final" aria-label="Username" aria-describedby="basic-addon1">
 
                 </div>
-                <span class="" v-if="error7" style="color:red;">Por favor llene el campo de Comisión por niños</span>
+                <span class="" v-if="error8" style="color:red;">Por favor llene el campo de % de zapatos final</span>
+
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col">
+                <div class="input-group mb-1 ">
+
+                    <div class="input-group-prepend col-6 ">
+                        <span class="input-group-text " id="basic-addon1">Comisión por 1 niño</span>
+                    </div>
+                    <input v-model.number="childrenCommission1" type="text" class="form-control col-6  mb-2  "
+                        placeholder="Comisión por 1 niño" aria-label="Username" aria-describedby="basic-addon1">
+
+                </div>
+                <span class="" v-if="error9" style="color:red;">Por favor llene el campo de Comisión por 1 niño</span>
+
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col">
+                <div class="input-group mb-1 ">
+
+                    <div class="input-group-prepend col-6 ">
+                        <span class="input-group-text " id="basic-addon1">Comisión por 2 niños</span>
+                    </div>
+                    <input v-model.number="childrenCommission2" type="text" class="form-control col-6  mb-2  "
+                        placeholder="Comisión por 2 niños" aria-label="Username" aria-describedby="basic-addon1">
+
+                </div>
+                <span class="" v-if="error10" style="color:red;">Por favor llene el campo de Comisión por 2 niños</span>
 
             </div>
         </div>
@@ -165,21 +217,34 @@
                                 <td>$ {{quantitySlippers}}</td>
                             </tr>
                             <tr>
-                                <td>% de zapatillas</td>
-                                <td>$ {{percentageSlippers}}</td>
+                                <td>% de zapatillas inicial</td>
+                                <td>$ {{percentageSlippers17}}</td>
+                            </tr>
+                            <tr>
+                                <td>% de zapatillas final</td>
+                                <td>$ {{percentageSlippers30}}</td>
                             </tr>
                             <tr>
                                 <td>Cantidad de zapatos</td>
                                 <td>$ {{quantityShoes}}</td>
                             </tr>
                             <tr>
-                                <td>% de zapatos</td>
-                                <td>$ {{percentageShoes}}</td>
+                                <td>% de zapatos inicial</td>
+                                <td>$ {{percentageShoes10}}</td>
                             </tr>
                             <tr>
-                                <td>Comisión por niños</td>
-                                <td>$ {{childrenCommission}}</td>
+                                <td>% de zapatos final</td>
+                                <td>$ {{percentageShoes20}}</td>
                             </tr>
+                            <tr>
+                                <td>Comisión por 1 niño</td>
+                                <td>$ {{childrenCommission1}}</td>
+                            </tr>
+                            <tr>
+                                <td>Comisión por 2 niño</td>
+                                <td>$ {{childrenCommission2}}</td>
+                            </tr>
+
 
                         </tbody>
 
