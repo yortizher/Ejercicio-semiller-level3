@@ -10,7 +10,7 @@ const app = new Vue({
      error2: false,
      error3: false,
      total:0,
-     salary:1000000,
+     salary:0,
      commission1:0.10,
      commission2:0.20,
      commission:0,
@@ -52,17 +52,13 @@ const app = new Vue({
               } else {
                 this.error3 = false;
               }
-          },
-          clearInputs(){
-            this.name=""
-            this.option=""
-            this.sells=""
-        
-  
         },
-
+        clearInputs(){
+          this.name=""
+          this.option=""
+          this.sells=""
+        },
         getArray(index){
-
          this.nameM = this.settlement[index].name,
          this.optionM=this.settlement[index].option
          this.sellsM=this.settlement[index].sells,
@@ -70,9 +66,7 @@ const app = new Vue({
          this.sellPriceM=this.settlement[index].sells
          this.bonusM=this.settlement[index].bonus  
          this.totalM=this.settlement[index].total 
-         
         },
-
         deleteRegister(data, index) {
             Swal.fire({
                 title: "¿Está seguro de eliminar a"+ " " +data.name+"?",
@@ -95,84 +89,66 @@ const app = new Vue({
                   );
               }
             });
-    },
+        },
 
         calculateLV(){
             this.getError();
-
-            
             if(this.option == "zapatilla"){
                 this.sellPrice= this.sells * this.shoes[0].price
-                
             }else if (this.option == "zapato"){
                 this.sellPrice = this.sells * this.shoes[1].price
-              
             }
-
-
             if(this.error == true || this.error2 == true || this.error3 == true ){
-               
-  
+                
             }else{
                 if(this.sellPrice > 5000000 && this.sellPrice < 10000000){
                     this.commission = (this.commission1 * this.salary)
                     this.bonus="10%"
-                    
                     this.total = this.commission + this.salary + 117172
-                
                 } else if(this.sellPrice > 10000000){
                     this.commission = (this.commission2 * this.salary)
                     this.total = this.commission + this.salary + 117172
                     this.bonus="20%"
-                   
-                
                 }else{
                     this.commission = 0
                     this.total = this.commission + this.salary + 117172
                     this.bonus="0%"
-                   
-                
                 }
-
                 this.settlement.push({
-                    name: this.name,
-                    option:this.option,
-                    sells: this.sells,
-                    commission: this.commission,
-                    bonus: this.bonus,
-                    sellPrice:this.sellPrice,
-                    total:this.total,
-                    
-                    
-                    
+                name: this.name,
+                option:this.option,
+                sells: this.sells,
+                commission: this.commission,
+                bonus: this.bonus,
+                sellPrice:this.sellPrice,
+                total:this.total,
                 });
                 this.updateLocalStorage();
                 this.message("Se liquido correctamente", 3000, "center");
                 this.clearInputs();
-            }
-  
-            
-           
-            },
-            updateLocalStorage() {
-                localStorage.setItem(
-                  "dataStoragePer",
-                  JSON.stringify(this.settlement)
-                );
+              }
               },
-              message(msj,time,position,text){
-                  Swal.fire({
-                    position: position,
-                    text: text,
-                    icon: "success",
-                    title: msj,
-                    showConfirmButton: false,
-                    timer: time,
-                  });
-                  },
-
-            
-            
+                updateLocalStorage() {
+              localStorage.setItem(
+                "dataStoragePer",
+                JSON.stringify(this.settlement)
+              );
+        },
+        updateLocalStorage2() {
+          this.salary = JSON.parse(localStorage.getItem("salarybaseSeller"));
+          this.commission1= JSON.parse(localStorage.getItem("bonusPercentageSeller5"));
+          this.commission2= JSON.parse(localStorage.getItem("bonusPercentageSeller10"));
+        },
+        message(msj,time,position,text){
+            Swal.fire({
+              position: position,
+              text: text,
+              icon: "success",
+              title: msj,
+              showConfirmButton: false,
+              timer: time,
+            });
+        },     
     },
 
     created() {
@@ -181,6 +157,7 @@ const app = new Vue({
         } else {
           this.settlement = this.settlement;
         }
+        this.updateLocalStorage2()
       }
   });
   
