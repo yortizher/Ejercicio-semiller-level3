@@ -1,4 +1,4 @@
-# App parqueadero
+# App Liquidador
 
 App parqueadero para la gestión desarrollada en VUE
 ## Installation
